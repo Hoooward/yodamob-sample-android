@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.BANNER;
+import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.INTERSTITIAL;
 import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_AD_TYPE;
 import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_AD_UNIT_ID;
 import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_DESCRIPTION;
@@ -115,7 +116,7 @@ public class AdUnitDataSource {
 
         adUnitList.add(
                 new YodaSampleAdUnit
-                        .Builder(mContext.getString(R.string.ad_unit_id_interstitial), BANNER)
+                        .Builder(mContext.getString(R.string.ad_unit_id_interstitial), INTERSTITIAL)
                         .description("YodaMob Interstitial Demo")
                         .build());
         // TODO: - 添加静态 unit

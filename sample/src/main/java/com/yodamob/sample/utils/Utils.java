@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class Utils {
 
-    static final String LOGTAG = "Yodamob Demo App";
+    static final String LOGTAG = "Yodamob Sample App";
 
     private Utils() {};
 
@@ -36,7 +36,7 @@ public class Utils {
         return input.matches("^[a-zA-Z0-9-_]*$");
     }
 
-    static void logToast(Context context, String message) {
+    public static void logToast(Context context, String message) {
         Log.d(LOGTAG, message);
 
         if (context != null) {

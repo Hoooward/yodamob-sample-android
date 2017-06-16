@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 //import com.yodamob.common.logging.YodaLog;
+import com.yodamob.sample.fragment.InterstitialDetailFragment;
 import com.yodamob.sample.fragment.banner_detail_fragment.BannerDetailFragment;
 
 /**
@@ -24,9 +25,8 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
     // 广告类型枚举
     public enum AdType {
 
-        BANNER("Banner", BannerDetailFragment.class);
-
-
+        BANNER("Banner", BannerDetailFragment.class),
+        INTERSTITIAL("Interstitial", InterstitialDetailFragment.class);
 
 
         private final String name;
