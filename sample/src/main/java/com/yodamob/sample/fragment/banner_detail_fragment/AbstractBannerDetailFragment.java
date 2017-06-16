@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 //import com.yodamob.mobileads.YodaView;
+import com.yodamob.mobileads.YodaErrorCode;
 import com.yodamob.mobileads.YodaView;
 import com.yodamob.sample.R;
 import com.yodamob.sample.Model.YodamobDemoAdUnit;
@@ -21,7 +22,7 @@ import static com.yodamob.sample.utils.Utils.hideSoftKeyboard;
  */
 
 
-public abstract class AbstractBannerDetailFragment extends Fragment {
+public abstract class AbstractBannerDetailFragment extends Fragment implements YodaView.BannerAdListener {
 
     private YodaView mYodaView;
     private YodamobDemoAdUnit mYodamobDemoAdUnit;
@@ -41,17 +42,17 @@ public abstract class AbstractBannerDetailFragment extends Fragment {
 
         // 从 bundle 中读取当前的 unit
         mYodamobDemoAdUnit = YodamobDemoAdUnit.fromBundle(getArguments());
-        mYodaView = (YodaView) view.findViewById(R.id.banner_yodaview);
+        mYodaView = (YodaView) view.findViewById(R.id.banner_container_view);
 
         // 修改 Banner 的 frame
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mYodaView.getLayoutParams();
         layoutParams.weight = getWidth();
         layoutParams.height = getHeight();
         mYodaView.setLayoutParams(layoutParams);
-
+        mYodaView.setAdUnitId(mYodamobDemoAdUnit.getAdUnitId());
+        mYodaView.setBannerAdListener(this);
         // 隐藏 keyword textField 键盘
         hideSoftKeyboard(views.mKeywordsField);
-
         views.mDescriptionView.setText(mYodamobDemoAdUnit.getDescription());
         views.mAdUnitIdView.setText(mYodamobDemoAdUnit.getAdUnitId());
         views.mloadButton.setOnClickListener(new View.OnClickListener() {
@@ -65,4 +66,27 @@ public abstract class AbstractBannerDetailFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onBannerClicked(YodaView yodaView) {
+    }
+
+    @Override
+    public void onBannerCollapsed(YodaView yodaView) {
+
+    }
+
+    @Override
+    public void onBannerExpanded(YodaView yodaView) {
+
+    }
+
+    @Override
+    public void onBannerFailed(YodaView yodaView, YodaErrorCode yodaErrorCode) {
+
+    }
+
+    @Override
+    public void onBannerLoaded(YodaView yodaView) {
+
+    }
 }

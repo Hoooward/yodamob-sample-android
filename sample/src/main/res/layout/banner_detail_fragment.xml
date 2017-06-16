@@ -52,19 +52,11 @@
     </LinearLayout>
 
     <com.yodamob.mobileads.YodaView
-        android:id="@+id/banner_yodaview"
+        android:id="@+id/banner_container_view"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp">
-
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:textAlignment="center"-->
-            <!--android:textSize="30dp"-->
-            <!--android:text="我是 Banner 广告"/>-->
-
     </com.yodamob.mobileads.YodaView>
 
 </LinearLayout>
