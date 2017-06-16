@@ -28,6 +28,7 @@ public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
 
 
 
+
         private final String name;
         private final Class<? extends Fragment> fragmentClass;
 
