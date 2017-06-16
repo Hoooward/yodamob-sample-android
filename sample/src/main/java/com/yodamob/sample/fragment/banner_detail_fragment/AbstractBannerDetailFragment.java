@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import com.yodamob.mobileads.YodaErrorCode;
 import com.yodamob.mobileads.YodaView;
 import com.yodamob.sample.R;
-import com.yodamob.sample.Model.YodamobDemoAdUnit;
+import com.yodamob.sample.Model.YodaSampleAdUnit;
 import com.yodamob.sample.fragment.DetailFragmentViewHolder;
 
 import static com.yodamob.sample.utils.Utils.hideSoftKeyboard;
@@ -25,7 +25,7 @@ import static com.yodamob.sample.utils.Utils.hideSoftKeyboard;
 public abstract class AbstractBannerDetailFragment extends Fragment implements YodaView.BannerAdListener {
 
     private YodaView mYodaView;
-    private YodamobDemoAdUnit mYodamobDemoAdUnit;
+    private YodaSampleAdUnit mYodaSampleAdUnit;
 
     public abstract int getWidth();
     public abstract int getHeight();
@@ -41,7 +41,7 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements Y
         final DetailFragmentViewHolder views = DetailFragmentViewHolder.fromView(view);
 
         // 从 bundle 中读取当前的 unit
-        mYodamobDemoAdUnit = YodamobDemoAdUnit.fromBundle(getArguments());
+        mYodaSampleAdUnit = YodaSampleAdUnit.fromBundle(getArguments());
         mYodaView = (YodaView) view.findViewById(R.id.banner_container_view);
 
         // 修改 Banner 的 frame
@@ -49,12 +49,12 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements Y
         layoutParams.weight = getWidth();
         layoutParams.height = getHeight();
         mYodaView.setLayoutParams(layoutParams);
-        mYodaView.setAdUnitId(mYodamobDemoAdUnit.getAdUnitId());
+        mYodaView.setAdUnitId(mYodaSampleAdUnit.getAdUnitId());
         mYodaView.setBannerAdListener(this);
         // 隐藏 keyword textField 键盘
         hideSoftKeyboard(views.mKeywordsField);
-        views.mDescriptionView.setText(mYodamobDemoAdUnit.getDescription());
-        views.mAdUnitIdView.setText(mYodamobDemoAdUnit.getAdUnitId());
+        views.mDescriptionView.setText(mYodaSampleAdUnit.getDescription());
+        views.mAdUnitIdView.setText(mYodaSampleAdUnit.getAdUnitId());
         views.mloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

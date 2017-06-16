@@ -12,7 +12,7 @@ import com.yodamob.sample.fragment.banner_detail_fragment.BannerDetailFragment;
  * list fragment 中每个 item 使用的 model 数据
  */
 
-public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
+public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
 
     // keys
     public static final String AD_UNIT_ID = "adUnitId";
@@ -83,8 +83,8 @@ public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
             return this;
         }
 
-        YodamobDemoAdUnit build() {
-            return new YodamobDemoAdUnit(this);
+        YodaSampleAdUnit build() {
+            return new YodaSampleAdUnit(this);
         }
     }
 
@@ -94,7 +94,7 @@ public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
     private final boolean mIsUserDefined;
     private final long mId;
 
-    private YodamobDemoAdUnit(final Builder builder) {
+    private YodaSampleAdUnit(final Builder builder) {
         mAdType = builder.mAdType;
         mAdUnitId = builder.mAdUnitId;
         mDescription = builder.mDescription;
@@ -143,14 +143,14 @@ public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
     }
 
     // 从 bundle 中读取数据
-    public static YodamobDemoAdUnit fromBundle(final Bundle bundle) {
+    public static YodaSampleAdUnit fromBundle(final Bundle bundle) {
 //        YodaLog.d("" + bundle, null);
         final Long id = bundle.getLong(ID, -1L);
         final String adUnitId = bundle.getString(AD_UNIT_ID);
         final AdType adType = (AdType) bundle.getSerializable(AD_TYPE);
         final String description = bundle.getString(DESCRIPTION);
         final boolean isUserDefined = bundle.getBoolean(IS_USER_DEFINED, false);
-        final Builder builder = new YodamobDemoAdUnit.Builder(adUnitId, adType);
+        final Builder builder = new YodaSampleAdUnit.Builder(adUnitId, adType);
         builder.description(description);
         builder.id(id);
         builder.isUserDefined(isUserDefined);
@@ -161,7 +161,7 @@ public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
 
     // Comparable
     @Override
-    public int compareTo(@NonNull YodamobDemoAdUnit o) {
+    public int compareTo(@NonNull YodaSampleAdUnit o) {
 
         if (mAdType != o.mAdType) {
             return mAdType.ordinal() - o.mAdType.ordinal();
@@ -191,11 +191,11 @@ public class YodamobDemoAdUnit implements Comparable<YodamobDemoAdUnit> {
             return true;
         }
 
-        if (!(obj instanceof YodamobDemoAdUnit)) {
+        if (!(obj instanceof YodaSampleAdUnit)) {
             return false;
         }
 
-        final YodamobDemoAdUnit that = (YodamobDemoAdUnit) obj;
+        final YodaSampleAdUnit that = (YodaSampleAdUnit) obj;
 
         return that.mAdType.equals(this.mAdType) &&
                 that.mIsUserDefined == this.mIsUserDefined &&

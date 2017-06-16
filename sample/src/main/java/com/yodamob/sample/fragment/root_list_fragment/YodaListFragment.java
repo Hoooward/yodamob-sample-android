@@ -5,27 +5,26 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yodamob.sample.Model.AdUnitDataSource;
 import com.yodamob.sample.R;
-import com.yodamob.sample.Model.YodamobDemoAdUnit;
+import com.yodamob.sample.Model.YodaSampleAdUnit;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
 import java.util.List;
 
-import static com.yodamob.sample.Model.YodamobDemoAdUnit.AdType;
+import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType;
 
 /**
  * Created by tychooo on 2017/6/6.
  */
 
 interface TrashCanClickListener {
-    void onTrashCanClicked(YodamobDemoAdUnit adUnit);
+    void onTrashCanClicked(YodaSampleAdUnit adUnit);
 }
 
 public class YodaListFragment extends android.support.v4.app.ListFragment implements TrashCanClickListener {
@@ -64,7 +63,7 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        final YodamobDemoAdUnit adUnit = mAdapter.getItem(position);
+        final YodaSampleAdUnit adUnit = mAdapter.getItem(position);
         final FragmentTransaction fragmentTransaction =
                 getActivity().getSupportFragmentManager().beginTransaction();
 
@@ -93,8 +92,8 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
         mAdapter = new ListAdapter(getActivity(), this);
         mAdUnitDataSource = new AdUnitDataSource(getActivity());
 
-        final List<YodamobDemoAdUnit> adUnits = mAdUnitDataSource.getAllAdUnits();
-        for (final YodamobDemoAdUnit adUnit : adUnits) {
+        final List<YodaSampleAdUnit> adUnits = mAdUnitDataSource.getAllAdUnits();
+        for (final YodaSampleAdUnit adUnit : adUnits) {
             mAdapter.add(adUnit);
         }
         //TODO: - 排序
@@ -104,7 +103,7 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
     }
 
     @Override
-    public void onTrashCanClicked(YodamobDemoAdUnit adUnit) {
+    public void onTrashCanClicked(YodaSampleAdUnit adUnit) {
 
     }
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.yodamob.sample.Model.YodamobDemoAdUnit.AdType.BANNER;
+import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.BANNER;
 import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_AD_TYPE;
 import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_AD_UNIT_ID;
 import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_DESCRIPTION;
@@ -43,16 +43,16 @@ public class AdUnitDataSource {
         populateDefaultDemoAdUnits();
     }
 
-    YodamobDemoAdUnit createDefaultDemoAdUnit(final YodamobDemoAdUnit adUnit) {
+    YodaSampleAdUnit createDefaultDemoAdUnit(final YodaSampleAdUnit adUnit) {
         return createDemoAdUnit(adUnit, false);
     }
 
-    YodamobDemoAdUnit createDemoAdUnit(final YodamobDemoAdUnit adUnit) {
+    YodaSampleAdUnit createDemoAdUnit(final YodaSampleAdUnit adUnit) {
         return createDemoAdUnit(adUnit, true);
     }
 
     // 向数据库中写去新 unit
-    private YodamobDemoAdUnit createDemoAdUnit(final YodamobDemoAdUnit demoAdUnit, final boolean isUserGenerated) {
+    private YodaSampleAdUnit createDemoAdUnit(final YodaSampleAdUnit demoAdUnit, final boolean isUserGenerated) {
 
         final ContentValues values = new ContentValues();
         final int userGenerated = isUserGenerated ? 1 : 0;
@@ -66,7 +66,7 @@ public class AdUnitDataSource {
         final Cursor cursor = database.query(TABLE_AD_CONFIGURATIONS, mAllColums, COLUMN_ID + " = " + insertId, null, null, null, null);
         cursor.moveToFirst();
 
-        final YodamobDemoAdUnit newAdConfiguration = cursorToAdConfiguration(cursor);
+        final YodaSampleAdUnit newAdConfiguration = cursorToAdConfiguration(cursor);
         cursor.close();
         database.close();
 
@@ -78,7 +78,7 @@ public class AdUnitDataSource {
     }
 
     // 删除 unit
-    void deleteDemoAdUnit(final YodamobDemoAdUnit adConfiguration) {
+    void deleteDemoAdUnit(final YodaSampleAdUnit adConfiguration) {
         final long id = adConfiguration.getId();
         SQLiteDatabase database = mYodamobSQLiteHelper.getWritableDatabase();
         database.delete(TABLE_AD_CONFIGURATIONS, COLUMN_ID + " = " + id, null);
@@ -86,14 +86,14 @@ public class AdUnitDataSource {
     }
 
     // 获取所有 units
-    public List<YodamobDemoAdUnit> getAllAdUnits() {
-        final List<YodamobDemoAdUnit> adConfigurations = new ArrayList<>();
+    public List<YodaSampleAdUnit> getAllAdUnits() {
+        final List<YodaSampleAdUnit> adConfigurations = new ArrayList<>();
         SQLiteDatabase database = mYodamobSQLiteHelper.getReadableDatabase();
         final Cursor cursor = database.query(TABLE_AD_CONFIGURATIONS, mAllColums, null, null, null, null, null);
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
-            final YodamobDemoAdUnit adConfiguration = cursorToAdConfiguration(cursor);
+            final YodaSampleAdUnit adConfiguration = cursorToAdConfiguration(cursor);
             adConfigurations.add(adConfiguration);
             cursor.moveToNext();
         }
@@ -105,16 +105,16 @@ public class AdUnitDataSource {
     }
 
     // 默认 units, 第一次被读取后会被写入数据库
-    List<YodamobDemoAdUnit> getDefaultAdUnits() {
-        final List<YodamobDemoAdUnit> adUnitList = new ArrayList<>();
+    List<YodaSampleAdUnit> getDefaultAdUnits() {
+        final List<YodaSampleAdUnit> adUnitList = new ArrayList<>();
         adUnitList.add(
-                new YodamobDemoAdUnit
+                new YodaSampleAdUnit
                         .Builder(mContext.getString(R.string.ad_unit_id_banner), BANNER)
                         .description("YodaMob Banner Demo")
                         .build());
 
         adUnitList.add(
-                new YodamobDemoAdUnit
+                new YodaSampleAdUnit
                         .Builder(mContext.getString(R.string.ad_unit_id_interstitial), BANNER)
                         .description("YodaMob Interstitial Demo")
                         .build());
@@ -125,30 +125,30 @@ public class AdUnitDataSource {
 
     private void populateDefaultDemoAdUnits() {
 
-        final HashSet<YodamobDemoAdUnit> allAdUnits = new HashSet<>();
-        for (final YodamobDemoAdUnit adUnit : getAllAdUnits()) {
+        final HashSet<YodaSampleAdUnit> allAdUnits = new HashSet<>();
+        for (final YodaSampleAdUnit adUnit : getAllAdUnits()) {
             allAdUnits.add(adUnit);
         }
 
-        for (final YodamobDemoAdUnit defaultAdUnit: getDefaultAdUnits()) {
+        for (final YodaSampleAdUnit defaultAdUnit: getDefaultAdUnits()) {
             if (!allAdUnits.contains(defaultAdUnit)) {
                 createDefaultDemoAdUnit(defaultAdUnit);
             }
         }
     }
 
-    private YodamobDemoAdUnit cursorToAdConfiguration(final Cursor cursor) {
+    private YodaSampleAdUnit cursorToAdConfiguration(final Cursor cursor) {
         final long id = cursor.getLong(0);
         final String adUnitId = cursor.getString(1);
         final String description = cursor.getString(2);
         final int userGenerated = cursor.getInt(3);
-        final YodamobDemoAdUnit.AdType adType = YodamobDemoAdUnit.AdType.fromFragmentClassName(cursor.getString(4));
+        final YodaSampleAdUnit.AdType adType = YodaSampleAdUnit.AdType.fromFragmentClassName(cursor.getString(4));
 
         if (adType == null) {
             return null;
         }
 
-        return new YodamobDemoAdUnit.Builder(adUnitId, adType).description(description).isUserDefined(userGenerated == 1).id(id).build();
+        return new YodaSampleAdUnit.Builder(adUnitId, adType).description(description).isUserDefined(userGenerated == 1).id(id).build();
 
     }
 }

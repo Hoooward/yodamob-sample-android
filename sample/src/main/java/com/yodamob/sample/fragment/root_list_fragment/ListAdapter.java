@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yodamob.sample.R;
-import com.yodamob.sample.Model.YodamobDemoAdUnit;
+import com.yodamob.sample.Model.YodaSampleAdUnit;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * list fragment Adapter
  */
 
-class ListAdapter extends ArrayAdapter<YodamobDemoAdUnit> {
+class ListAdapter extends ArrayAdapter<YodaSampleAdUnit> {
 
     private final TrashCanClickListener mListener;
 
@@ -34,7 +34,7 @@ class ListAdapter extends ArrayAdapter<YodamobDemoAdUnit> {
     private final LayoutInflater mLayoutInflater;
 
     ListAdapter(final Context context, TrashCanClickListener listener) {
-        super(context, 0, new ArrayList<YodamobDemoAdUnit>());
+        super(context, 0, new ArrayList<YodaSampleAdUnit>());
         mListener = listener;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -59,7 +59,7 @@ class ListAdapter extends ArrayAdapter<YodamobDemoAdUnit> {
 
         view.setTag(viewHolder);
 
-        final YodamobDemoAdUnit adUnit = getItem(position);
+        final YodaSampleAdUnit adUnit = getItem(position);
 
         if (adUnit == null) {
             return view;
@@ -97,8 +97,8 @@ class ListAdapter extends ArrayAdapter<YodamobDemoAdUnit> {
             return true;
         }
 
-        final YodamobDemoAdUnit previous = getItem(position - 1);
-        final YodamobDemoAdUnit current = getItem(position);
+        final YodaSampleAdUnit previous = getItem(position - 1);
+        final YodaSampleAdUnit current = getItem(position);
 
         if (previous == null || current == null) {
             return false;
