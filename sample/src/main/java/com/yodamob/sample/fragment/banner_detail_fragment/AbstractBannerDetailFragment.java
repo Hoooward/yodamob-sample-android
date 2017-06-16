@@ -49,13 +49,13 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements Y
         layoutParams.weight = getWidth();
         layoutParams.height = getHeight();
         mYodaView.setLayoutParams(layoutParams);
-        mYodaView.setAdUnitId(mYodaSampleAdUnit.getAdUnitId());
+        mYodaView.setAdUnitId(mYodaSampleAdUnit.getSlotId());
         mYodaView.setBannerAdListener(this);
         // 隐藏 keyword textField 键盘
         hideSoftKeyboard(views.mKeywordsField);
         views.mDescriptionView.setText(mYodaSampleAdUnit.getDescription());
-        views.mAdUnitIdView.setText(mYodaSampleAdUnit.getAdUnitId());
-        views.mloadButton.setOnClickListener(new View.OnClickListener() {
+        views.mSlotIdView.setText(mYodaSampleAdUnit.getSlotId());
+        views.mLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // load AD

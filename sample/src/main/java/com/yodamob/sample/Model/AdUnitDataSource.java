@@ -57,7 +57,7 @@ public class AdUnitDataSource {
 
         final ContentValues values = new ContentValues();
         final int userGenerated = isUserGenerated ? 1 : 0;
-        values.put(COLUMN_AD_UNIT_ID, demoAdUnit.getAdUnitId());
+        values.put(COLUMN_AD_UNIT_ID, demoAdUnit.getSlotId());
         values.put(COLUMN_DESCRIPTION, demoAdUnit.getDescription());
         values.put(COLUMN_USER_GENERATED, userGenerated);
         values.put(COLUMN_AD_TYPE, demoAdUnit.getFragmentClassname());

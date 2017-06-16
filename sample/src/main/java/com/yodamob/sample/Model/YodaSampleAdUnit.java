@@ -28,7 +28,6 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
         BANNER("Banner", BannerDetailFragment.class),
         INTERSTITIAL("Interstitial", InterstitialDetailFragment.class);
 
-
         private final String name;
         private final Class<? extends Fragment> fragmentClass;
 
@@ -56,14 +55,14 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
 
     static class Builder {
 
-        private final String mAdUnitId;
+        private final String mSlotId;
         private final AdType mAdType;
         private String mDescription;
         private boolean mIsUserDefined;
         private long mId;
 
-        Builder(final String adUnitId, final AdType adType) {
-            mAdUnitId = adUnitId;
+        Builder(final String slotId, final AdType adType) {
+            mSlotId = slotId;
             mAdType = adType;
             mId = -1;
         }
@@ -88,7 +87,7 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
         }
     }
 
-    private final String mAdUnitId;
+    private final String mSlotId;
     private final AdType mAdType;
     private final String mDescription;
     private final boolean mIsUserDefined;
@@ -96,7 +95,7 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
 
     private YodaSampleAdUnit(final Builder builder) {
         mAdType = builder.mAdType;
-        mAdUnitId = builder.mAdUnitId;
+        mSlotId = builder.mSlotId;
         mDescription = builder.mDescription;
         mIsUserDefined = builder.mIsUserDefined;
         mId = builder.mId;
@@ -106,8 +105,8 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
         return mAdType.getFragmentClass();
     }
 
-    public String getAdUnitId() {
-        return mAdUnitId;
+    public String getSlotId() {
+        return mSlotId;
     }
 
     public String getDescription() {
@@ -134,7 +133,7 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
     public Bundle toBundle() {
         final Bundle bundle = new Bundle();
         bundle.putLong(ID, mId);
-        bundle.putString(AD_UNIT_ID, mAdUnitId);
+        bundle.putString(AD_UNIT_ID, mSlotId);
         bundle.putSerializable(DESCRIPTION, mDescription);
         bundle.putSerializable(AD_TYPE, mAdType);
         bundle.putBoolean(IS_USER_DEFINED, mIsUserDefined);
@@ -176,7 +175,7 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
         result = 31 * result + mAdType.ordinal();
         result = 31 * result + (mIsUserDefined ? 1 : 0);
         result = 31 * result + mDescription.hashCode();
-        result = 31 * result + mAdUnitId.hashCode();
+        result = 31 * result + mSlotId.hashCode();
         return result;
     }
 
@@ -200,7 +199,7 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
         return that.mAdType.equals(this.mAdType) &&
                 that.mIsUserDefined == this.mIsUserDefined &&
                 that.mDescription.equals(this.mDescription) &&
-                that.mAdUnitId.equals(this.mAdUnitId);
+                that.mSlotId.equals(this.mSlotId);
     }
 }
 

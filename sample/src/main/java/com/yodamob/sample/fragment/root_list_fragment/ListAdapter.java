@@ -66,7 +66,7 @@ class ListAdapter extends ArrayAdapter<YodaSampleAdUnit> {
         }
 
         viewHolder.description.setText(adUnit.getDescription());
-        viewHolder.adUnitId.setText(adUnit.getAdUnitId());
+        viewHolder.adUnitId.setText(adUnit.getSlotId());
 
         if (isFirstInSection(position)) {
             viewHolder.separator.setVisibility(View.VISIBLE);

@@ -6,11 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import com.yodamob.mobileads.YodaErrorCode;
 import com.yodamob.mobileads.YodaInterstitial;
-import com.yodamob.sample.Model.AdUnitDataSource;
 import com.yodamob.sample.Model.YodaSampleAdUnit;
 import com.yodamob.sample.R;
 import com.yodamob.sample.utils.Utils;
@@ -34,10 +32,10 @@ public class InterstitialDetailFragment extends Fragment implements YodaIntersti
         final DetailFragmentViewHolder views = DetailFragmentViewHolder.fromView(view);
         Utils.hideSoftKeyboard(views.mKeywordsField);
 
-        final String adSlotId = adConfiguration.getAdUnitId();
+        final String adSlotId = adConfiguration.getSlotId();
         views.mDescriptionView.setText(adConfiguration.getDescription());
-        views.mAdUnitIdView.setText(adSlotId);
-        views.mloadButton.setOnClickListener(new View.OnClickListener() {
+        views.mSlotIdView.setText(adSlotId);
+        views.mLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mShowButton.setEnabled(false);
