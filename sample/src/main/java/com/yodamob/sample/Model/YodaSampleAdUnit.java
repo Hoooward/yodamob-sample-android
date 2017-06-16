@@ -40,7 +40,7 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
             return fragmentClass;
         }
 
-        String getName() { return name; }
+        public String getName() { return name; }
 
         //根据 classname 指定 adType
         static AdType fromFragmentClassName(final String fragmentClassName) {

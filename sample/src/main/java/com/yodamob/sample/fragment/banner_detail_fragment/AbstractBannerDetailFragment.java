@@ -14,6 +14,7 @@ import com.yodamob.mobileads.YodaView;
 import com.yodamob.sample.R;
 import com.yodamob.sample.Model.YodaSampleAdUnit;
 import com.yodamob.sample.fragment.DetailFragmentViewHolder;
+import com.yodamob.sample.utils.Utils;
 
 import static com.yodamob.sample.utils.Utils.hideSoftKeyboard;
 
@@ -49,44 +50,73 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements Y
         layoutParams.weight = getWidth();
         layoutParams.height = getHeight();
         mYodaView.setLayoutParams(layoutParams);
-        mYodaView.setAdUnitId(mYodaSampleAdUnit.getSlotId());
-        mYodaView.setBannerAdListener(this);
+
         // 隐藏 keyword textField 键盘
         hideSoftKeyboard(views.mKeywordsField);
+
+        final String adSlotId = mYodaSampleAdUnit.getSlotId();
         views.mDescriptionView.setText(mYodaSampleAdUnit.getDescription());
         views.mSlotIdView.setText(mYodaSampleAdUnit.getSlotId());
         views.mLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // load AD
-                mYodaView.loadAd();
+                final String keywords = views.mKeywordsField.getText().toString();
+                loadYodaView(adSlotId, keywords);
             }
         });
+        mYodaView.setBannerAdListener(this);
+        loadYodaView(adSlotId, null);
 
         return view;
     }
 
     @Override
-    public void onBannerClicked(YodaView yodaView) {
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (mYodaView != null) {
+            mYodaView.destroy();
+            mYodaView = null;
+        }
+    }
+
+    private void loadYodaView(final String adSlotId, final String keywords) {
+        mYodaView.setAdUnitId(adSlotId);
+        mYodaView.setKeywords(keywords);
+        mYodaView.loadAd();
+    }
+
+    private String getName() {
+        if (mYodaSampleAdUnit == null) {
+            return YodaSampleAdUnit.AdType.BANNER.getName();
+        }
+        return mYodaSampleAdUnit.getHeaderName();
+    }
+
+    // BannerAdListener
+    @Override
+    public void onBannerLoaded(YodaView banner) {
+        Utils.logToast(getActivity(), getName() + " loaded.");
     }
 
     @Override
-    public void onBannerCollapsed(YodaView yodaView) {
-
+    public void onBannerFailed(YodaView banner, YodaErrorCode errorCode) {
+        final String errorMessage = (errorCode != null) ? errorCode.toString() : "";
+        Utils.logToast(getActivity(), getName() + " failed to load: " + errorMessage);
     }
 
     @Override
-    public void onBannerExpanded(YodaView yodaView) {
-
+    public void onBannerClicked(YodaView banner) {
+        Utils.logToast(getActivity(), getName() + " clicked.");
     }
 
     @Override
-    public void onBannerFailed(YodaView yodaView, YodaErrorCode yodaErrorCode) {
-
+    public void onBannerExpanded(YodaView banner) {
+        Utils.logToast(getActivity(), getName() + " expanded.");
     }
 
     @Override
-    public void onBannerLoaded(YodaView yodaView) {
-
+    public void onBannerCollapsed(YodaView banner) {
+        Utils.logToast(getActivity(), getName() + " collapsed.");
     }
 }
