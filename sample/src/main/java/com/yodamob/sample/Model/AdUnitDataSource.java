@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.yodamob.sample.R;
-import com.yodamob.sample.utils.YodamobSQLiteHelper;
+import com.yodamob.sample.utils.YodaSQLiteHelper;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,12 +14,12 @@ import java.util.List;
 
 import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.BANNER;
 import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.INTERSTITIAL;
-import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_AD_TYPE;
-import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_AD_UNIT_ID;
-import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_DESCRIPTION;
-import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_ID;
-import static com.yodamob.sample.utils.YodamobSQLiteHelper.COLUMN_USER_GENERATED;
-import static com.yodamob.sample.utils.YodamobSQLiteHelper.TABLE_AD_CONFIGURATIONS;
+import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_AD_TYPE;
+import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_AD_UNIT_ID;
+import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_DESCRIPTION;
+import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_ID;
+import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_USER_GENERATED;
+import static com.yodamob.sample.utils.YodaSQLiteHelper.TABLE_AD_CONFIGURATIONS;
 
 /**
  * Created by tychooo on 2017/6/6.
@@ -28,7 +28,7 @@ import static com.yodamob.sample.utils.YodamobSQLiteHelper.TABLE_AD_CONFIGURATIO
 public class AdUnitDataSource {
 
     private Context mContext;
-    private YodamobSQLiteHelper mYodamobSQLiteHelper;
+    private YodaSQLiteHelper mYodaSQLiteHelper;
     private String[] mAllColums = {
             COLUMN_ID,
             COLUMN_AD_UNIT_ID,
@@ -40,7 +40,7 @@ public class AdUnitDataSource {
     // 初始化
     public AdUnitDataSource(final Context context) {
         mContext = context;
-        mYodamobSQLiteHelper = new YodamobSQLiteHelper(context);
+        mYodaSQLiteHelper = new YodaSQLiteHelper(context);
         populateDefaultDemoAdUnits();
     }
 
@@ -62,7 +62,7 @@ public class AdUnitDataSource {
         values.put(COLUMN_USER_GENERATED, userGenerated);
         values.put(COLUMN_AD_TYPE, demoAdUnit.getFragmentClassname());
 
-        final SQLiteDatabase database = mYodamobSQLiteHelper.getWritableDatabase();
+        final SQLiteDatabase database = mYodaSQLiteHelper.getWritableDatabase();
         final long insertId = database.insert(TABLE_AD_CONFIGURATIONS, null, values);
         final Cursor cursor = database.query(TABLE_AD_CONFIGURATIONS, mAllColums, COLUMN_ID + " = " + insertId, null, null, null, null);
         cursor.moveToFirst();
@@ -81,7 +81,7 @@ public class AdUnitDataSource {
     // 删除 unit
     void deleteDemoAdUnit(final YodaSampleAdUnit adConfiguration) {
         final long id = adConfiguration.getId();
-        SQLiteDatabase database = mYodamobSQLiteHelper.getWritableDatabase();
+        SQLiteDatabase database = mYodaSQLiteHelper.getWritableDatabase();
         database.delete(TABLE_AD_CONFIGURATIONS, COLUMN_ID + " = " + id, null);
         database.close();
     }
@@ -89,7 +89,7 @@ public class AdUnitDataSource {
     // 获取所有 units
     public List<YodaSampleAdUnit> getAllAdUnits() {
         final List<YodaSampleAdUnit> adConfigurations = new ArrayList<>();
-        SQLiteDatabase database = mYodamobSQLiteHelper.getReadableDatabase();
+        SQLiteDatabase database = mYodaSQLiteHelper.getReadableDatabase();
         final Cursor cursor = database.query(TABLE_AD_CONFIGURATIONS, mAllColums, null, null, null, null, null);
         cursor.moveToFirst();
 

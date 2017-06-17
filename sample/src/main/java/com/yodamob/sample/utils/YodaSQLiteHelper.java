@@ -9,7 +9,7 @@ import android.util.Log;
  * Created by tychooo on 2017/6/6.
  */
 
-public class YodamobSQLiteHelper extends SQLiteOpenHelper {
+public class YodaSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_AD_CONFIGURATIONS = "adConfigurations";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_AD_UNIT_ID = "adUnitId";
@@ -29,7 +29,7 @@ public class YodamobSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_AD_TYPE + " text not null"
             + ");";
 
-    public YodamobSQLiteHelper(final Context context) {
+    public YodaSQLiteHelper(final Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -40,13 +40,13 @@ public class YodamobSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(YodamobSQLiteHelper.class.getName(), "调整数据版本, 旧版本为" + oldVersion + "新版本为" + newVersion);
+        Log.w(YodaSQLiteHelper.class.getName(), "调整数据版本, 旧版本为" + oldVersion + "新版本为" + newVersion);
         recreatedDb(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(YodamobSQLiteHelper.class.getName(), "调整数据版本, 旧版本为" + oldVersion + "新版本为" + newVersion);
+        Log.w(YodaSQLiteHelper.class.getName(), "调整数据版本, 旧版本为" + oldVersion + "新版本为" + newVersion);
         recreatedDb(db);
     }
 
