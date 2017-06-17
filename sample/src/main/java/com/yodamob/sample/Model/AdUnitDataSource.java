@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.BANNER;
-import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.INTERSTITIAL;
-import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.LIST_VIEW;
+import static com.yodamob.sample.Model.YodaSampleAdUnit.AdType.*;
 import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_AD_TYPE;
 import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_AD_UNIT_ID;
 import static com.yodamob.sample.utils.YodaSQLiteHelper.COLUMN_DESCRIPTION;
@@ -123,7 +121,12 @@ public class AdUnitDataSource {
         adUnitList.add(
                 new YodaSampleAdUnit
                         .Builder(mContext.getString(R.string.ad_unit_id_native), LIST_VIEW)
-                        .description("YodaMob Interstitial Demo")
+                        .description("YodaMob List View Demo")
+                        .build());
+        adUnitList.add(
+                new YodaSampleAdUnit
+                        .Builder(mContext.getString(R.string.ad_unit_id_native), RECYCLER_VIEW)
+                        .description("YodaMob Recycler View Demo")
                         .build());
         // TODO: - 添加静态 unit
         return adUnitList;

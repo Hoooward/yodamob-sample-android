@@ -28,26 +28,20 @@ ext {
 }
 
 dependencies {
-
     compile(name: 'yodamob-sdk-base-debug', ext: 'aar')
     compile(name: 'yodamob-sdk-banner-debug', ext: 'aar')
     compile(name: 'yodamob-sdk-interstitial-debug', ext: 'aar')
     compile(name: 'yodamob-sdk-native-static-debug', ext: 'aar')
     compile(name: 'yodamob-sdk-native-video-debug', ext: 'aar')
     compile(name: 'yodamob-sdk-rewardedvideo-debug', ext: 'aar')
-
     //compile 'com.mopub.volley:mopub-volley:1.1.0'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-//    compile files('libs/sdk-banner.jar')
-//    compile files('libs/sdk-base.jar')
+    compile 'com.android.support:recyclerview-v7:25.1.1'
+    //    compile files('libs/sdk-banner.jar')
+    //    compile files('libs/sdk-base.jar')
 }
