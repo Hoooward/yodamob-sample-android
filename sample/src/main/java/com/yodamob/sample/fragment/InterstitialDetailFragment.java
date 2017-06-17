@@ -26,6 +26,7 @@ public class InterstitialDetailFragment extends Fragment implements YodaIntersti
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         super.onCreateView(inflater, container, savedInstanceState);
         final YodaSampleAdUnit adConfiguration = YodaSampleAdUnit.fromBundle(getArguments());
         final View view = inflater.inflate(R.layout.interstitial_detail_fragment, container, false);

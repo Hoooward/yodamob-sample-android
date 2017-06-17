@@ -84,21 +84,7 @@ public class NativeListViewFragment extends Fragment {
                         .privacyInformationIconImageId(R.id.native_privacy_information_icon_image)
                         .build());
 
-        // Set up a renderer for a video native ad.
-        final YodaVideoNativeAdRenderer videoAdRenderer = new YodaVideoNativeAdRenderer(
-                new MediaViewBinder.Builder(R.layout.video_ad_list_item)
-                        .titleId(R.id.native_title)
-                        .textId(R.id.native_text)
-                        .mediaLayoutId(R.id.native_media_layout)
-                        .iconImageId(R.id.native_icon_image)
-                        .callToActionId(R.id.native_cta)
-                        .privacyInformationIconImageId(R.id.native_privacy_information_icon_image)
-                        .build());
-
-
         // Register the renderers with the YodaAdAdapter and then set the adapter on the ListView.
-
-        mAdAdapter.registerAdRenderer(videoAdRenderer);
         mAdAdapter.registerAdRenderer(staticAdRender);
         listView.setAdapter(mAdAdapter);
 

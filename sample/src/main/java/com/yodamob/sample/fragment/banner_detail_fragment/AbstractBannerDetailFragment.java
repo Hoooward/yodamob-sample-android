@@ -22,7 +22,6 @@ import static com.yodamob.sample.utils.Utils.hideSoftKeyboard;
  * Created by tychooo on 2017/6/6.
  */
 
-
 public abstract class AbstractBannerDetailFragment extends Fragment implements YodaView.BannerAdListener {
 
     private YodaView mYodaView;

@@ -74,9 +74,9 @@ public class NativeRecyclerViewFragment extends Fragment {
                 }
             }
         });
-        final String adUnitId = mAdConfiguration.getSlotId();
+        final String adSlotId = mAdConfiguration.getSlotId();
         viewHolder.mDescriptionView.setText(mAdConfiguration.getDescription());
-        viewHolder.mSlotIdView.setText(adUnitId);
+        viewHolder.mSlotIdView.setText(adSlotId);
 
         final RecyclerView.Adapter originalAdapter = new DemoRecyclerAdapter();
 
