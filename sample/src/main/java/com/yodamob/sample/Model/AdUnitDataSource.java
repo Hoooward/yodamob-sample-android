@@ -118,16 +118,25 @@ public class AdUnitDataSource {
                         .Builder(mContext.getString(R.string.ad_unit_id_interstitial), INTERSTITIAL)
                         .description("YodaMob Interstitial Demo")
                         .build());
+
         adUnitList.add(
                 new YodaSampleAdUnit
                         .Builder(mContext.getString(R.string.ad_unit_id_native), LIST_VIEW)
                         .description("YodaMob List View Demo")
                         .build());
+
         adUnitList.add(
                 new YodaSampleAdUnit
                         .Builder(mContext.getString(R.string.ad_unit_id_native), RECYCLER_VIEW)
                         .description("YodaMob Recycler View Demo")
                         .build());
+
+        adUnitList.add(
+                new YodaSampleAdUnit
+                        .Builder(mContext.getString(R.string.ad_unit_id_native), CUSTOM_NATIVE)
+                        .description("YodaMob View Pager Demo")
+                        .build());
+
         // TODO: - 添加静态 unit
         return adUnitList;
     }
