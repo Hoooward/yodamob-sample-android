@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:singleLine="true"
+        android:maxLines="1"
         android:textColor="?android:attr/textColorSecondary"
         android:textSize="14sp"
         android:textStyle="normal" />

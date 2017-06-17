@@ -36,7 +36,6 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
 
     private static final AdType[] adTypes = AdType.values();
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +45,16 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.list_fragment, container, false);
-        final Button button = (Button) view.findViewById(R.id.add_ad_unit_button);
+//        final Button button = (Button) view.findViewById(R.id.add_ad_unit_button);
         final TextView versionCodeView = (TextView) view.findViewById(R.id.version_code);
         versionCodeView.setText("SDK Version " + MoPub.SDK_VERSION);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAddClicked(v);
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onAddClicked(v);
+//            }
+//        });
 
         return view;
     }
@@ -108,13 +107,4 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
     public void onTrashCanClicked(YodaSampleAdUnit adUnit) {
 
     }
-
-    public void onAddClicked(final View view){
-        // 添加新广告获取方MoPubNativeAdLoadedListener案
-//        final AddDialogFragment dialogFragment = AddDialogFragment.newInstance();
-//        dialogFragment.setTargetFragment(this, 0);
-//        dialogFragment.show(getActivity().getSupportFragmentManager(), "add");
-    }
-
-
 }

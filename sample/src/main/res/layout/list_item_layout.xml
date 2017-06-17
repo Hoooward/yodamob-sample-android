@@ -24,7 +24,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="8dp"
-            android:singleLine="true"
+            android:maxLines="1"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:singleLine="true"
+            android:maxLines="1"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="14sp"
             android:textStyle="normal" />
