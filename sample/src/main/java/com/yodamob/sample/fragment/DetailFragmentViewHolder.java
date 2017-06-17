@@ -29,7 +29,7 @@ public class DetailFragmentViewHolder {
     public static DetailFragmentViewHolder fromView(final View view) {
 
         final TextView descriptionView = (TextView) view.findViewById(R.id.description);
-        final TextView adSlotIdView = (TextView) view.findViewById(R.id.ad_slot_id);
+        final TextView adSlotIdView = (TextView) view.findViewById(R.id.ad_unit_id);
         final EditText keywordsField = (EditText) view.findViewById(R.id.keywords_field);
         final Button loadButton = (Button) view.findViewById(R.id.load_button);
 

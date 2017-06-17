@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 
 //import com.yodamob.common.logging.YodaLog;
 import com.yodamob.sample.fragment.InterstitialDetailFragment;
+import com.yodamob.sample.fragment.NativeListViewFragment;
 import com.yodamob.sample.fragment.banner_detail_fragment.BannerDetailFragment;
 
 /**
@@ -26,7 +27,8 @@ public class YodaSampleAdUnit implements Comparable<YodaSampleAdUnit> {
     public enum AdType {
 
         BANNER("Banner", BannerDetailFragment.class),
-        INTERSTITIAL("Interstitial", InterstitialDetailFragment.class);
+        INTERSTITIAL("Interstitial", InterstitialDetailFragment.class),
+        LIST_VIEW("Native List View",NativeListViewFragment.class);
 
         private final String name;
         private final Class<? extends Fragment> fragmentClass;
