@@ -12,6 +12,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="8dp"
+        android:maxLines="1"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -40,7 +41,9 @@
             android:layout_weight="3"
             android:inputType="text|textFilter|textShortMessage"
             android:imeOptions="actionDone"
+            android:maxLines="1"
             />
+
 
         <Button
             android:id="@+id/load_button"
@@ -48,15 +51,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxLines="1"
             />
     </LinearLayout>
 
     <com.yodamob.mobileads.YodaView
         android:id="@+id/banner_container_view"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="20dp" >
     </com.yodamob.mobileads.YodaView>
 
 </LinearLayout>
