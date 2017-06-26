@@ -80,7 +80,7 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements Y
     }
 
     private void loadYodaView(final String adSlotId, final String keywords) {
-        mYodaView.setAdUnitId(adSlotId);
+        mYodaView.setAdSlotId(adSlotId);
         mYodaView.setKeywords(keywords);
         mYodaView.loadAd();
     }

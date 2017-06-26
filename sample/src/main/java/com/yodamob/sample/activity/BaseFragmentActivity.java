@@ -5,9 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-
-import android.view.Window;
-import android.view.WindowManager;
 import com.yodamob.sample.R;
 
 /**
@@ -22,11 +19,6 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-//        this.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-
         setContentView(R.layout.main);
 
         if (findViewById(R.id.fragment_container) != null) {

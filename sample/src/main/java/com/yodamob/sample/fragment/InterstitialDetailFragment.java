@@ -49,6 +49,7 @@ public class InterstitialDetailFragment extends Fragment implements YodaIntersti
                 mYodaInterstitial.load();
             }
         });
+
         mShowButton = (Button) view.findViewById(R.id.interstitial_show_button);
         mShowButton.setEnabled(false);
         mShowButton.setOnClickListener(new View.OnClickListener() {

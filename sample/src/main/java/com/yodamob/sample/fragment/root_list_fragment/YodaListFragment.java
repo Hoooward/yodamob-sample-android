@@ -2,20 +2,17 @@ package com.yodamob.sample.fragment.root_list_fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.yodamob.common.MoPub;
+import com.yodamob.common.YodaMob;
 import com.yodamob.sample.Model.AdUnitDataSource;
-import com.yodamob.sample.R;
 import com.yodamob.sample.Model.YodaSampleAdUnit;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import com.yodamob.sample.R;
 
 import java.util.List;
 
@@ -47,7 +44,7 @@ public class YodaListFragment extends android.support.v4.app.ListFragment implem
         final View view = inflater.inflate(R.layout.list_fragment, container, false);
 //        final Button button = (Button) view.findViewById(R.id.add_ad_unit_button);
         final TextView versionCodeView = (TextView) view.findViewById(R.id.version_code);
-        versionCodeView.setText("SDK Version " + MoPub.SDK_VERSION);
+        versionCodeView.setText("SDK Version " + YodaMob.SDK_VERSION);
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override

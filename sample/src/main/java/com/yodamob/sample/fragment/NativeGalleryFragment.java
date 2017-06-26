@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.yodamob.nativeads.*;
 import com.yodamob.sample.Model.YodaSampleAdUnit;
@@ -23,7 +22,7 @@ import java.util.EnumSet;
  * Created by tychooo on 2017/6/17.
  */
 
-public class NativeGalleryFragment extends Fragment implements MoPubNativeAdLoadedListener {
+public class NativeGalleryFragment extends Fragment implements YodaNativeAdLoadedListener {
     private YodaSampleAdUnit mAdConfiguration;
     private ViewPager mViewPager;
     private CustomPagerAdapter mPagerAdapter;
